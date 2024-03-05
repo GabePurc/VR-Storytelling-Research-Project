@@ -202,6 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 37603563}
   - component: {fileID: 37603562}
+  - component: {fileID: 37603564}
   m_Layer: 0
   m_Name: MovementOperator
   m_TagString: Untagged
@@ -273,6 +274,32 @@ Transform:
   - {fileID: 1301485412}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &37603564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37603561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d52c0f15a897e947b7ee6c1ad975947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Pause
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 526d4a62-bd89-4fa8-bacf-fc7205db893e
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  mover: {fileID: 37603562}
 --- !u!1 &54448958
 GameObject:
   m_ObjectHideFlags: 0

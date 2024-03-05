@@ -14,9 +14,13 @@ namespace SWS
 
         private void Update()
         {
-            if (pauseAction.action.ReadValue<float>()> 0.1f)
+            if (pauseAction.action.ReadValue<float>()> 0.1f && !mover.IsPaused())
             {
                 mover.Stop();
+            }
+            else if (pauseAction.action.ReadValue<float>() > 0.1f && mover.IsPaused())
+            {
+                mover.Resume();
             }
         }
     }
