@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/VR interaction - Gabe.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/_Scenes/_Final Assembly Scene.unity
+    guid: 64a265a831e93e247abd73add07bd927
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 231b888ec00bbda4ab8057155e43d137,
       type: 2}
