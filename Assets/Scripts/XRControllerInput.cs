@@ -13,13 +13,21 @@ public class XRControllerInput : MonoBehaviour
         Right_Controller,
     }
 
+    private enum ButtonPress
+    {
+        ButtonUp,
+        ButtonDown,
+        ButtonHeld,
+    }
+
     [SerializeField]
     ControllerSide m_controller;
     InputDeviceCharacteristics m_characteristics;
 
     public splineMove splineTravel;
     bool isButtonPressed;
-    bool isInputX; /// "X" button on left controller
+    bool isPaused = false; 
+    ButtonPress xButton = ButtonPress.ButtonUp; // Number corrisponding to the state of the x button on the left controller   
 
     // Start is called before the first frame update
     void Start()
@@ -49,17 +57,21 @@ public class XRControllerInput : MonoBehaviour
         }
 
         ///toggle player stop and go movement on the spline
-        if(isInputX && isButtonPressed == true)
+        if(!isPaused && xButton == ButtonPress.ButtonDown)
         {
             splineTravel.Pause();
-            isButtonPressed = false;
-        }
+            isPaused = true;
 
-        if (!isInputX && isButtonPressed == true)
+            Debug.Log("Pausing spline move");
+        }
+        else if (isPaused && xButton == ButtonPress.ButtonDown)
         {
             splineTravel.Resume();
-            isButtonPressed = false;
+            isPaused = false;
+
+            Debug.Log("Unpausing spline move");
         }
+
 
 
     }
@@ -68,21 +80,27 @@ public class XRControllerInput : MonoBehaviour
     {
         bool primaryButtonDown = false;
         d.TryGetFeatureValue(CommonUsages.primaryButton, out primaryButtonDown);
+
         
         if (primaryButtonDown) /// "X" button on left controller or "A" button on right controller
         {
             Debug.Log("Button down");
+            xButton++;
 
-            isButtonPressed = true;
-            isInputX = !isInputX;
+            if ((int)xButton > 1)
+            {
+                xButton = ButtonPress.ButtonHeld;
+            }
         }
         else
         {
             Debug.Log("Button up");
+            xButton = ButtonPress.ButtonUp;
         }
 
         bool triggerDown = false;
         d.TryGetFeatureValue(CommonUsages.triggerButton, out triggerDown);
+
         if (triggerDown)
         {
             Debug.Log("Trigger down");
