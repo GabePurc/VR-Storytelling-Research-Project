@@ -53,7 +53,13 @@ public class XRControllerInput : MonoBehaviour
         }
         else
         {
-            Debug.Log("Controller not found");
+            //Debug.Log("Controller not found");
+        }
+
+        if(m_device.Count == 2)
+        {
+            CheckController(m_device[0]);
+            CheckController(m_device[1]);
         }
 
         ///toggle player stop and go movement on the spline
